@@ -11,7 +11,7 @@ export default function useGetRecommendedBooks() {
         async function fetchData() {
             isLoading(true)
             try {
-                const res = await axios.get("https://us-central1-summaristt.cloudfunctions.net/getBooks?status=selected")
+                const res = await axios.get("https://us-central1-summaristt.cloudfunctions.net/getBooks?status=recommended")
                 const data: Book[] = res.data
                 setData(data)
                 isLoading(false)

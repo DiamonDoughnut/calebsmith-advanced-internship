@@ -2,7 +2,7 @@ import { Book } from "@/lib/types";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export default function useGetRecommendedBooks(id: string) {
+export default function useGetBookById(id: string) {
     const [loading, isLoading] = useState(true)
     const [data, setData] = useState<Book>()
     const [error, setError] = useState<unknown | null>(null);

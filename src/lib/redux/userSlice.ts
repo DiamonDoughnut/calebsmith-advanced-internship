@@ -1,18 +1,25 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from './store';
+import { DocumentReference } from 'firebase/firestore';
 
 interface UserStates {
     email: string | null,
     uid: string | null,
     library: string[],
-    finished: string[]
+    finished: string[],
+    userDocRef: DocumentReference | null,
+    isSubscribed: boolean,
+    prefferedText: 'base' | 'lg' | 'xl' | '2xl'
 }
 
 const initialState: UserStates = {
     email: null,
     uid: null,
     library: [],
-    finished: []
+    finished: [],
+    userDocRef: null,
+    isSubscribed: false,
+    prefferedText: 'base'
 }
 
 const userSlice = createSlice({
@@ -32,12 +39,24 @@ const userSlice = createSlice({
         if (action.payload.finished) {
           state.finished = action.payload.finished;
         }
+        if (action.payload.userDocRef) {
+          state.userDocRef = action.payload.userDocRef;
+        }
+        if (action.payload.isSubscribed) {
+          state.isSubscribed = action.payload.isSubscribed;
+        }
+        if (action.payload.prefferedText) {
+          state.prefferedText = action.payload.prefferedText
+        }
     },
     signOutUser: (state) => {
         state.email = null;
         state.uid = null;
         state.library = [];
-        state.finished = []
+        state.finished = [];
+        state.userDocRef = null;
+        state.isSubscribed = false;
+        state.prefferedText = 'base'
     }
   }
 });
