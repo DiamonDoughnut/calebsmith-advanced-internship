@@ -155,6 +155,8 @@ const LoginModal = () => {
                 uid: currentUser.uid,
                 library: userDoc.library || [], // Provide defaults
                 finished: userDoc.finished || [],
+                userDocRef: userDoc.userDocRef || userDoc,
+                isSubscribed: userDoc.isSubscribed || false,
               })
             );
           } else {
@@ -166,6 +168,7 @@ const LoginModal = () => {
                 uid: currentUser.uid,
                 library: [],
                 finished: [],
+                isSubscribed: false
               })
             );
           }

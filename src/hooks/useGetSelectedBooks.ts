@@ -4,15 +4,15 @@ import { useEffect, useState } from "react";
 
 export default function useGetSelectedBooks() {
     const [loading, isLoading] = useState(true)
-    const [data, setData] = useState<Book>()
+    const [data, setData] = useState<Book[]>()
     const [error, setError] = useState<unknown | null>(null);
 
     useEffect(() => {
         async function fetchData() {
             isLoading(true)
             try {
-                const res = await axios.get("https://us-central1-summaristt.cloudfunctions.net/getBooks?status=recommended")
-                const data: Book = res.data
+                const res = await axios.get("https://us-central1-summaristt.cloudfunctions.net/getBooks?status=selected")
+                const data: Book[] = res.data
                 setData(data)
                 isLoading(false)
             } catch (e) {

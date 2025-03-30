@@ -7,10 +7,12 @@ export type Book = {
     totalRating: number,
     averageRating: number,
     keyIdeas: number,
+    tags: string[],
     type: string,
     status: string,
     subscriptionRequired: boolean,
     summary: string,
     bookDescription: string,
-    authorDescription: string
+    authorDescription: string,
+    audioLink: string
 }

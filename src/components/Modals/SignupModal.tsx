@@ -35,6 +35,12 @@ const SignupModal = () => {
   const isOpen = useAppSelector((state) => state.modals.signupModalOpen)
   const dispatch = useAppDispatch();
 
+  const formatTime = (time) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  };
+
   const handleSignup = async () => {
     if (!email || !password) {
       setError("Please fill in all fields");
@@ -58,7 +64,8 @@ const SignupModal = () => {
         library: [],
         finished: [],
         createdAt: new Date().toISOString(),
-      });
+        isSubscribed: false
+      }); 
 
       dispatch(
         setUser({
@@ -66,6 +73,8 @@ const SignupModal = () => {
           uid: userCredential.user.uid,
           library: [],
           finished: [],
+          userDocRef,
+          isSubscribed: false
         })
       );
 
