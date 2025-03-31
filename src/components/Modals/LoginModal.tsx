@@ -213,7 +213,7 @@ const LoginModal = () => {
       }}
       modal
     >
-      <DialogContent className={cn('sm:max-w-[500px] sm:min-h-[600px] h-fit flex flex-col items-center overflow-y-hidden justify-center gap-y-8 pt-8',
+      <DialogContent className={cn('sm:max-w-[500px] sm:min-h-[600px] sm:h-fit h-full w-full flex flex-col items-center overflow-y-hidden justify-center gap-y-8 pt-8',
         error && 'sm:min-h-[680px]'
       )}>
         <DialogHeader className='flex items-center mt-8 justify-center p-4'>

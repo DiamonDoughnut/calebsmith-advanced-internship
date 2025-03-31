@@ -1,5 +1,5 @@
 'use client'
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger  } from '@/components/ui/accordion'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { Button } from '@/components/ui/button'
 import { useAppDispatch, useAppSelector } from '@/hooks/ReduxTSAdapter'
 import { cn } from '@/lib/utils'
@@ -20,107 +20,186 @@ const Page = () => {
     const router = useRouter();
     const params = useSearchParams();
     const [processing, setProcessing] = useState(false);
+
     if (params.toString().includes('cancelled')) {
         setProcessing(false);
-
     }
-    
 
     if (isSubscribed) {
         router.push('/for-you');
     }
 
     const handleClick = () => {
-            dispatch(openLoginModal());
-            return;
+        dispatch(openLoginModal());
+        return;
     }
 
-  return (
-    <div className='h-full w-full relative'>
-    <div className="h-fit w-full relative">
-    <div className='h-[100vw] !-mt-[65vw] !pt-[62vw] w-full bg-slate-800 text-white rounded-b-[30%] relative z-20 flex flex-col items-center justify-center'>
-        <div className='w-[60%] h-1/2 flex items-center justify-center flex-col gap-y-8 relative z-30'>
-        <h1 className='text-5xl font-bold text-center'>Get unlimited access to many amazing books to read</h1>
-        <h1 className='text-2xl text-center'>Turn ordinary moments into amazing learning opportunities</h1>
-        </div>
-        <div className="h-2/5 w-[20%] bg-transparent rounded-t-full !-mb-16 items-center justify-center relative z-20">
-            <Image src={'/assets/pricing-top.png'} alt='' height={722} width={860} className='object-contain rounded-t-full' />
-        </div>
-    </div>
-    <div className="h-30 w-full !mt-8 flex justify-center items-center relative z-30 gap-x-8">
-        <div className='flex flex-col items-center text-wrap w-60 text-center'>
-        <FileTextIcon fill='#1D293D' className='text-white !w-16 h-16' />
-        <span>
-        <b>Key ideas in few min</b> with many books to read.
-        </span>
-        </div>
-        <div className='flex flex-col items-center text-wrap w-60 text-center'>
-        <SproutIcon className='!w-16 h-16' />
-        <span>
-        <b>3 million</b> people growing with Summarist every day
-        </span>
-        </div>
-        <div className='flex flex-col items-center text-wrap w-60 text-center'>
-        <HandshakeIcon className='!w-16 h-16' />
-        <span>
-        <b>Precise recommendations</b> 
-        <p>collections curated by experts</p>    
-        </span>
-        </div>
-    </div>
-    <div className="flex flex-col items-center gap-y-8 justify-center relative">
-        <h1 className="text-3xl !mt-8 ">Choose the plan that fits you</h1>
-        <div onClick={() => setPlanSelected('annual')} className={cn('h-40 w-1/2 border-4 cursor-pointer border-gray-500 rounded-md flex items-center justify-start gap-x-8', planSelected === 'annual' && 'border-green-500')}>
-            <div className="h-full w-fit">
-                { planSelected === 'annual' ? (
-                    <CircleDotIcon className='!ml-8 !mt-6 h-8 w-8' />
-                ) : (
-                    <CircleIcon className='!ml-8 !mt-6 h-8 w-8'/>    
+    return (
+        <div className='min-h-screen w-full relative flex flex-col'>
+            <div className="w-full relative">
+                {/* Hero section - maintaining !-mt-[65vw] !pt-[62vw] for desktop */}
+                <div className='min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh] w-full 
+                    bg-slate-800 text-white 
+                    rounded-b-[15%] sm:rounded-b-[20%] md:rounded-b-[25%] lg:rounded-b-[30%] 
+                    relative z-20 
+                    flex flex-col items-center justify-center
+                    !-mt-[30vw] sm:!-mt-[40vw] md:!-mt-[50vw] lg:!-mt-[65vw]
+                    !pt-[28vw] sm:!pt-[38vw] md:!pt-[48vw] lg:!pt-[62vw]'>
+                    
+                    <div className='w-[90%] sm:w-[80%] md:w-[70%] lg:w-[60%] 
+                        flex items-center justify-center flex-col 
+                        !gap-y-4 sm:!gap-y-6 md:!gap-y-8 
+                        relative z-30'>
+                        <h1 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center'>
+                            Get unlimited access to many amazing books to read
+                        </h1>
+                        <h2 className='text-lg sm:text-xl md:text-2xl text-center'>
+                            Turn ordinary moments into amazing learning opportunities
+                        </h2>
+                    </div>
+
+                    <div className="h-2/5 w-[40%] sm:w-[30%] md:w-[25%] lg:w-[20%] 
+                        bg-transparent rounded-t-full 
+                        !-mb-8 sm:!-mb-12 md:!-mb-16 
+                        items-center justify-center relative z-20">
+                        <Image 
+                            src={'/assets/pricing-top.png'} 
+                            alt='' 
+                            height={722} 
+                            width={860} 
+                            className='object-contain rounded-t-full' 
+                        />
+                    </div>
+                </div>
+
+                {/* Features section */}
+                <div className="w-full !mt-8 
+                    flex flex-col sm:flex-row 
+                    justify-center items-center 
+                    relative z-30 
+                    !gap-y-6 sm:!gap-x-8">
+                    <div className='flex flex-col items-center text-center w-60'>
+                        <FileTextIcon fill='#1D293D' className='text-white !w-12 sm:!w-16 h-12 sm:h-16' />
+                        <span>
+                            <b>Key ideas in few min</b> with many books to read.
+                        </span>
+                    </div>
+                    <div className='flex flex-col items-center text-center w-60'>
+                        <SproutIcon className='!w-12 sm:!w-16 h-12 sm:h-16' />
+                        <span>
+                            <b>3 million</b> people growing with Summarist every day
+                        </span>
+                    </div>
+                    <div className='flex flex-col items-center text-center w-60'>
+                        <HandshakeIcon className='!w-12 sm:!w-16 h-12 sm:h-16' />
+                        <span>
+                            <b>Precise recommendations</b>
+                            <p>collections curated by experts</p>
+                        </span>
+                    </div>
+                </div>
+
+                {/* Plans section */}
+                <div className="flex flex-col items-center !gap-y-8 justify-center relative">
+                    <h1 className="text-xl sm:text-2xl md:text-3xl !mt-8">
+                        Choose the plan that fits you
+                    </h1>
+
+                    {/* Annual plan */}
+                    <div 
+                        onClick={() => setPlanSelected('annual')} 
+                        className={cn('w-[90%] sm:w-[70%] md:w-[60%] lg:w-1/2 h-auto sm:h-40 border-4 cursor-pointer border-gray-500 rounded-md flex flex-col sm:flex-row items-start sm:items-center justify-start !p-4 sm:!p-6 !gap-4 sm:!gap-x-8',
+                            planSelected === 'annual' && 'border-green-500'
+                        )}>
+                        <div className="w-fit">
+                            {planSelected === 'annual' ? (
+                                <CircleDotIcon className='h-6 w-6 sm:h-8 sm:w-8' />
+                            ) : (
+                                <CircleIcon className='h-6 w-6 sm:h-8 sm:w-8' />
+                            )}
+                        </div>
+                        <div className="flex-1">
+                            <h1 className='font-bold text-lg sm:text-xl'>Premium Plus</h1>
+                            <h1 className='font-bold text-xl sm:text-2xl md:text-3xl'>
+                                $99.99 <span className='text-sm font-normal text-gray-500'>(billed annually)</span>
+                            </h1>
+                            <p className='underline decoration-green-500'>7-day free trial included</p>
+                        </div>
+                    </div>
+
+                    {/* Divider */}
+                    <div className="flex relative items-center justify-center w-[90%] sm:w-[70%] md:w-[60%] lg:w-1/2">
+                        <div className="absolute left-0 top-1/2 -translate-y-[50%] h-0.5 w-[40%] bg-gray-400/50 rounded-full z-50" />
+                        <p>or</p>
+                        <div className="absolute right-0 top-1/2 -translate-y-[50%] h-0.5 w-[40%] bg-gray-400/50 rounded-full z-50" />
+                    </div>
+
+                    {/* Monthly plan */}
+                    <div 
+                        onClick={() => setPlanSelected('monthly')} 
+                        className={cn('w-[90%] sm:w-[70%] md:w-[60%] lg:w-1/2 h-auto sm:h-40 border-4 cursor-pointer border-gray-500 rounded-md flex flex-col sm:flex-row items-start sm:items-center justify-start !p-4 sm:!p-6 !gap-4 sm:!gap-x-8',
+                            planSelected === 'monthly' && 'border-green-500'
+                        )}>
+                        <div className="w-fit">
+                            {planSelected === 'monthly' ? (
+                                <CircleDotIcon className='h-6 w-6 sm:h-8 sm:w-8' />
+                            ) : (
+                                <CircleIcon className='h-6 w-6 sm:h-8 sm:w-8' />
+                            )}
+                        </div>
+                        <div className="flex-1">
+                            <h1 className='font-bold text-lg sm:text-xl'>Premium</h1>
+                            <h1 className='font-bold text-xl sm:text-2xl md:text-3xl'>
+                                $9.99 <span className='text-sm font-normal text-gray-500'>(billed monthly)</span>
+                            </h1>
+                            <p className='underline decoration-red-500'>Free trial NOT included</p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Alert */}
+                {params.toString().includes('cancelled') && (
+                    <Alert className='w-[90%] sm:w-[70%] md:w-[60%] lg:w-1/2 mx-auto 
+                        border-red-500 text-red-700 bg-red-400/20 
+                        !mt-8 !pl-8 
+                        flex flex-col relative'>
+                        <AlertTriangleIcon className='min-h-8 min-w-8 absolute top-1 left-8' />
+                        <AlertTitle>Order Cancelled</AlertTitle>
+                        <AlertDescription className='text-red-700'>
+                            Continue shopping and return here when you&apos;re ready to purchase.
+                        </AlertDescription>
+                    </Alert>
                 )}
-            </div>
-            <div className="h-full w-fit !pt-6">
-                <h1 className='font-bold text-xl'>Premium Plus</h1>
-                <h1 className='font-bold text-3xl'>$99.99 <span className='text-sm font-normal text-gray-500'>(billed annually)</span> </h1>
-                <p className='underline decoration-green-500'>7-day free trial included</p>
-            </div>
-        </div>
-        <div className="flex relative items-center justify-center w-1/2 ">
-                <div className="absolute left-0 top-1/2 -translate-y-[50%] h-0.5 w-[40%] bg-gray-400/50 rounded-full z-50" />
-                <p>or</p>
-                <div className="absolute right-0 top-1/2 -translate-y-[50%] h-0.5 w-[40%] bg-gray-400/50 rounded-full z-50" />
-        </div>
-        
-        <div onClick={() => setPlanSelected('monthly')} className={cn('h-40 w-1/2 border-4 cursor-pointer border-gray-500 rounded-md flex items-center justify-start gap-x-8', planSelected === 'monthly' && 'border-green-500')}>
-            <div className="h-full w-fit">
-                { planSelected === 'monthly' ? (
-                    <CircleDotIcon className='!ml-8 !mt-6 h-8 w-8' />
-                ) : (
-                    <CircleIcon className='!ml-8 !mt-6 h-8 w-8'/>    
-                )}
-            </div>
-            <div className="h-full w-fit !pt-6">
-                <h1 className='font-bold text-xl'>Premium</h1>
-                <h1 className='font-bold text-3xl'>$9.99 <span className='text-sm font-normal text-gray-500'>(billed monthly)</span> </h1>
-                <p className='underline decoration-red-500'>Free trial NOT included</p>
-            </div>
-        </div>
-    </div>
-    {params.toString().includes('cancelled') && (
-            <Alert className='w-1/2 justify-self-center !mt-8 border-red-500 text-red-700 bg-red-400/20 items-center !pl-8 flex flex-col relative' >
-                <AlertTriangleIcon className='min-h-8 min-w-8 absolute top-1 left-8' />
-                <AlertTitle >Order Cancelled</AlertTitle>
-                <AlertDescription className='text-red-700'> Continue shopping and return here when you&apos;re ready to purchase.</AlertDescription>
-            </Alert>
-        )}
-    <form action={(user ? `/api/checkout_sessions/${planSelected}` : handleClick)} method='POST' className="sticky bottom-0 left-0 h-40 w-full bg-white z-50 flex flex-col items-center justify-center">
-        <Button type='submit' disabled={processing} className='bg-green-500 w-1/3 py-2 text-xl hover:bg-green-600 cursor-pointer'>
-            {planSelected === "annual" ? "Start your 7-day free trial" : "Start your first month" }
-        </Button>
-        <p className="text-sm text-gray-500 !pt-4">{planSelected === 'annual' ? "Cancel your trial at any time before it ends and you won't be charged" : "30-day money back guarantee; No questions asked."}</p>
-    </form>
-    </div>
-    <div className="w-full h-fit  flex flex-col items-center justify-center">
-        <Accordion type='single' collapsible className='w-1/2'>
+
+                {/* Action button */}
+                <form 
+                    action={(user ? `/api/checkout_sessions/${planSelected}` : handleClick)} 
+                    method='POST' 
+                    className="sticky bottom-0 left-0 
+                        h-auto sm:h-40 w-full 
+                        bg-white z-50 
+                        flex flex-col items-center justify-center 
+                        !py-4 sm:!py-6">
+                    <Button 
+                        type='submit' 
+                        disabled={processing} 
+                        className='w-[90%] sm:w-[70%] md:w-[60%] lg:w-1/3 
+                            !py-2 
+                            text-lg sm:text-xl 
+                            bg-green-500 hover:bg-green-600 cursor-pointer'>
+                        {planSelected === "annual" ? "Start your 7-day free trial" : "Start your first month"}
+                    </Button>
+                    <p className="text-sm text-gray-500 !pt-4 text-center !px-4">
+                        {planSelected === 'annual' 
+                            ? "Cancel your trial at any time before it ends and you won't be charged" 
+                            : "30-day money back guarantee; No questions asked."}
+                    </p>
+                </form>
+
+                {/* FAQ Accordion */}
+                <div className="w-full flex flex-col items-center justify-center !pb-12">
+                    <Accordion type='single' collapsible className='w-[90%] sm:w-[70%] md:w-[60%] lg:w-1/2'>
+                   
             <AccordionItem value='item-1' className='w-full !py-4'>
                 <AccordionTrigger className='cursor-pointer'>
                     <h1 className='text-2xl font-bold'>{"How does the 7-day free trial work?"}</h1>
@@ -186,6 +265,7 @@ const Page = () => {
                 </div>
                 </div>
                 <h1 className='!pt-10 font-bold text-base'>Copyright &copy; 2025 Summarist.</h1>
+        </div>        
         </div>        
     </div>
     </div>
