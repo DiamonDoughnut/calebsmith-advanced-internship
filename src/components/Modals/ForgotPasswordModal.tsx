@@ -57,7 +57,7 @@ const ForgotPasswordModal = () => {
         }}
         modal
     >
-        <DialogContent className={cn('sm:max-w-[500px] sm:min-h-[300px] flex flex-col items-center overflow-y-hidden justify-center gap-y-8 pt-8',
+        <DialogContent className={cn('sm:max-w-[500px] sm:min-h-[300px] sm:h-fit h-full w-full flex flex-col items-center overflow-y-hidden justify-center gap-y-8 pt-8',
             status !== null && "sm:min-h-[360px]"
         )}>
             <DialogHeader className="flex items-center mt-8 justify-center p-4">

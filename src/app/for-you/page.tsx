@@ -39,7 +39,7 @@ const Page = () => {
   }
     
   return (
-    <div className='h-full w-full relative !ml-50 !pl-32 !pb-24 text-black'>
+    <div className='h-full w-full relative z-0 !ml-50 !pl-32 !pb-24 text-black'>
         <Header />
         <Sidebar page='For you' />
         <SelectedBook />

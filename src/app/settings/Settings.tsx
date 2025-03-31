@@ -23,27 +23,80 @@ const Settings = () => {
 
     if (!user) {
         return (
-            <div className='h-full w-[60%] !ml-92'>
-                <h1 className='text-3xl font-bold !py-4 border-b border-b-gray-500/50'>Settings</h1>
-                <div className="flex flex-col items-center justify-center w-full">
-                    <Image src={'/assets/login.png'} alt='' width={1033} height={712} className='object-contain h-100' />
-                    <h1 className="text-3xl font-bold !py-4 w-full text-center">Log in to view your settings</h1>
-                    <Button onClick={handleLoginClick} className='!p-4 !px-8 bg-green-500 text-xl'>Log In</Button>
+            <div className='h-full w-full sm:w-[80%] md:w-[70%] lg:w-[60%] 
+                !ml-4 sm:!ml-8 md:!ml-12 lg:!ml-92'>
+                <h1 className='text-2xl sm:text-3xl font-bold 
+                    !py-4 
+                    border-b border-b-gray-500/50'>
+                    Settings
+                </h1>
+                <div className="flex flex-col items-center justify-center w-full 
+                    !mt-4 sm:!mt-8">
+                    <div className="relative w-full max-w-[600px] aspect-[1.45/1]">
+                        <Image 
+                            src={'/assets/login.png'} 
+                            alt='' 
+                            fill
+                            className='object-contain'
+                        />
+                    </div>
+                    <h1 className="text-xl sm:text-2xl md:text-3xl font-bold 
+                        !py-4 
+                        w-full text-center">
+                        Log in to view your settings
+                    </h1>
+                    <Button 
+                        onClick={handleLoginClick} 
+                        className='!p-4 !px-8 bg-green-500 text-lg sm:text-xl'>
+                        Log In
+                    </Button>
                 </div>
             </div>
         )
     }
-  return (
-            <div className='h-full w-[60%] !ml-92'>
-                <h1 className='text-3xl font-bold !py-4 border-b border-b-gray-500/50'>Settings</h1>
-                <h1 className="text-xl font-bold !pt-8 !pb-4">Your Subscription plan</h1>
-                <p className="text-base font-normal !pb-4">{isSubscribed ? isSubscribed : "Basic"}</p>
-                {!isSubscribed && <Button onClick={handleSubscriptionClick} className='!p-4 !px-8 bg-green-500 text-xl'>Upgrade</Button>}
-                <div className='h-[1px] w-full bg-gray-500/50 !mt-8' />
-                <h1 className='text-xl font-bold !pt-8 !pb-4'>Email</h1>
-                <p className="text-base font-normal !pb-4">{user.email}</p>
+
+    return (
+        <div className='h-full w-full sm:w-[80%] md:w-[70%] lg:w-[60%] 
+            !ml-4 sm:!ml-8 md:!ml-12 lg:!ml-92'>
+            <h1 className='text-2xl sm:text-3xl font-bold 
+                !py-4 
+                border-b border-b-gray-500/50'>
+                Settings
+            </h1>
+            
+            {/* Subscription section */}
+            <div className="!mt-4 sm:!mt-8">
+                <h1 className="text-lg sm:text-xl font-bold 
+                    !pt-8 !pb-4">
+                    Your Subscription plan
+                </h1>
+                <p className="text-base font-normal !pb-4">
+                    {isSubscribed ? isSubscribed : "Basic"}
+                </p>
+                {!isSubscribed && (
+                    <Button 
+                        onClick={handleSubscriptionClick} 
+                        className='!p-4 !px-8 bg-green-500 text-lg sm:text-xl'>
+                        Upgrade
+                    </Button>
+                )}
             </div>
-  )
+
+            {/* Divider */}
+            <div className='h-[1px] w-full bg-gray-500/50 !mt-8' />
+
+            {/* Email section */}
+            <div className="!mt-4 sm:!mt-8">
+                <h1 className='text-lg sm:text-xl font-bold 
+                    !pt-8 !pb-4'>
+                    Email
+                </h1>
+                <p className="text-base font-normal !pb-4">
+                    {user.email}
+                </p>
+            </div>
+        </div>
+    )
 }
 
 export default Settings
