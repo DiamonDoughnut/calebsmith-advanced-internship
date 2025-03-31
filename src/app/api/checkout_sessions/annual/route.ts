@@ -24,7 +24,9 @@ export async function POST() {
     return NextResponse.redirect(session.url as string | URL, 303)
   } catch (err) {
     return NextResponse.json(
-      { error: err.message as string | URL },
+            //@ts-expect-error: error is type unknown
+            { error: err.message as string | URL },
+            //@ts-expect-error: error is type unknown
       { status: err.statusCode as number || 500 }
     )
   }

@@ -1,3 +1,4 @@
+
 import { NextResponse } from 'next/server'
 import { headers } from 'next/headers'
 
@@ -25,7 +26,9 @@ export async function POST() {
     return NextResponse.redirect(session.url as string | URL | NextURL, 303)
   } catch (err) {
     return NextResponse.json(
+      //@ts-expect-error: error is type unknown
       { error: err.message as string | URL | NextURL },
+      //@ts-expect-error: error is type unknown
       { status: err.statusCode as number || 500 }
     )
   }
