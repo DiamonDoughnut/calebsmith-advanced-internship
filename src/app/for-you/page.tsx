@@ -1,7 +1,7 @@
 'use client'
 import Header from '@/components/Header'
 import Sidebar from '../../components/Sidebar'
-import React from 'react'
+import React, { Suspense } from 'react'
 import SelectedBook from '@/components/SelectedBook'
 import RecommendedBooks from '@/components/RecommendedBooks'
 import SuggestedBooks from '@/components/SuggestedBooks'
@@ -39,6 +39,7 @@ const Page = () => {
   }
     
   return (
+    <Suspense >
     <div className='h-full w-full relative z-0 !ml-50 !pl-32 !pb-24 text-black'>
         <Header />
         <Sidebar page='For you' />
@@ -46,6 +47,7 @@ const Page = () => {
         <RecommendedBooks />
         <SuggestedBooks />
     </div>
+    </Suspense>
   )
 }
 

@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 import { AlertTriangleIcon, CircleDotIcon, CircleIcon, FileTextIcon, HandshakeIcon, SproutIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { Suspense, useState } from 'react'
 import { auth } from '../../../firebase'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { openLoginModal } from '@/lib/redux/modalSlice'
@@ -35,6 +35,7 @@ const Page = () => {
     }
 
     return (
+        <Suspense>
         <div className='min-h-screen w-full relative flex flex-col'>
             <div className="w-full relative">
                 {/* Hero section - maintaining !-mt-[65vw] !pt-[62vw] for desktop */}
@@ -269,6 +270,7 @@ const Page = () => {
         </div>        
     </div>
     </div>
+    </Suspense>
   )
 }
 
