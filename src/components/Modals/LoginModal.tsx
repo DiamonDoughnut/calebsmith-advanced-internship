@@ -168,7 +168,7 @@ const LoginModal = () => {
                 uid: currentUser.uid,
                 library: [],
                 finished: [],
-                isSubscribed: false
+                isSubscribed: undefined
               })
             );
           }

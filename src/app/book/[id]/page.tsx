@@ -77,7 +77,7 @@ const Page = () => {
   return (
     <div className='h-full w-full relative !ml-50 !pl-24 !pb-24 text-black'>
       <Header />
-      <Sidebar page='book/:id' setFontSize={undefined} />
+      <Sidebar page='book/:id' />
       <div className=' h-fit w-[80%] gap-x-4 flex items-start'>
         <div className='flex flex-col w-[75%] h-full gap-y-4'>
           <h1 className='text-3xl font-bold'>{data?.title} {data?.subscriptionRequired ? " (Premium)" : ""}</h1>

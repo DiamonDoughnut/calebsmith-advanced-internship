@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React, { Dispatch, SetStateAction } from 'react'
+import React from 'react'
 import SidebarLink from './SidebarLink'
 import { BookmarkIcon, CogIcon, HelpCircleIcon, HouseIcon, LogInIcon, LogOutIcon, PenIcon, SearchIcon } from 'lucide-react'
 import { auth } from '../../firebase'

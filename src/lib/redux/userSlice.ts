@@ -8,7 +8,7 @@ interface UserStates {
     library: string[],
     finished: string[],
     userDocRef: DocumentReference | null,
-    isSubscribed: boolean,
+    isSubscribed: 'premium' | 'premium-plus' | null,
     prefferedText: 'base' | 'lg' | 'xl' | '2xl'
 }
 
@@ -18,7 +18,7 @@ const initialState: UserStates = {
     library: [],
     finished: [],
     userDocRef: null,
-    isSubscribed: false,
+    isSubscribed: null,
     prefferedText: 'base'
 }
 
@@ -55,7 +55,7 @@ const userSlice = createSlice({
         state.library = [];
         state.finished = [];
         state.userDocRef = null;
-        state.isSubscribed = false;
+        state.isSubscribed = null;
         state.prefferedText = 'base'
     }
   }
