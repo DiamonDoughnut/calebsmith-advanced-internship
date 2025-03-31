@@ -1,5 +1,5 @@
 "use client";
-import React, { use, useState } from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -7,7 +7,6 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { BiLogoGoogle } from "react-icons/bi";
@@ -34,12 +33,6 @@ const SignupModal = () => {
   const router = useRouter();
   const isOpen = useAppSelector((state) => state.modals.signupModalOpen)
   const dispatch = useAppDispatch();
-
-  const formatTime = (time) => {
-    const minutes = Math.floor(time / 60);
-    const seconds = Math.floor(time % 60);
-    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-  };
 
   const handleSignup = async () => {
     if (!email || !password) {
@@ -74,7 +67,7 @@ const SignupModal = () => {
           library: [],
           finished: [],
           userDocRef,
-          isSubscribed: false
+          isSubscribed: undefined
         })
       );
 
