@@ -26,6 +26,7 @@ const SearchResultItem = ({book}: {book: Book}) => {
                         <p>{formatTime(duration)}</p>
                       </div>
                     </div>
+                    {/*@ts-expect-error: error is type unknown*/}
                     <audio src={book.audioLink} className='hidden' ref={audioRef} onLoadedMetadata={() => setDuration(audioRef?.current?.duration)} />
                   </div>
   )
