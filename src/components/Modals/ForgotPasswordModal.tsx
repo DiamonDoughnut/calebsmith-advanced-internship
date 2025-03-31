@@ -1,5 +1,5 @@
 "use client";
-import React, { ChangeEvent, useState } from "react";
+import React, { useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -14,7 +14,6 @@ import { closeForgotPasswordModal, openForgotPasswordModal, openLoginModal } fro
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { MailCheckIcon, TriangleAlertIcon } from "lucide-react";
-import { FirebaseError } from "firebase/app";
 import { cn } from "@/lib/utils";
 
 

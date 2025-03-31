@@ -213,7 +213,7 @@ const Page = () => {
 
                 {/* Book description */}
                 <div className='flex flex-col !mt-4 !gap-y-2'>
-                  <h1 className='text-lg font-bold'>What's it about?</h1>
+                  <h1 className='text-lg font-bold'>What&apos;s it about?</h1>
                   <div className='flex flex-wrap !gap-2'>
                     {data.tags.map((tag) => (
                       <div
