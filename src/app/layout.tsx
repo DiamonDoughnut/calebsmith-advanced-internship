@@ -5,6 +5,7 @@ import StoreProvider from "@/util/StoreProvider";
 import LoginModal from "@/components/Modals/LoginModal";
 import SignupModal from "@/components/Modals/SignupModal";
 import ForgotPasswordModal from "@/components/Modals/ForgotPasswordModal";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,6 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
+      <Suspense>
       <StoreProvider>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased max-w-full overflow-x-hidden`}
@@ -38,6 +40,7 @@ export default function RootLayout({
         <LoginModal />
         <ForgotPasswordModal />
       </StoreProvider>
+      </Suspense>
     </html>
   );
 }
