@@ -8,7 +8,7 @@ const LibraryBookItem = ({id}: {id: string}) => {
         return <></>
     }
   return (
-    <ForYouBookItem book={data} />
+    <ForYouBookItem book={data} loading={loading} />
   )
 }
 
