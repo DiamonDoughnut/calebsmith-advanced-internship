@@ -66,6 +66,7 @@ const ForgotPasswordModal = () => {
                 {status === 'error' && (
                     <div className="h-12 w-full flex justify-center items-center relative bg-red-500/30 border-2 border-red-500 text-red-600 rounded-md">
                     <TriangleAlertIcon className="absolute top-1/2 left-2 -translate-y-1/2 h-10 w-10" />
+                    {/*@ts-expect-error: error is type unknown*/}
                     <p>{error?.message || 'An error occured, please try again later'}</p>
                     </div>
                 )}
